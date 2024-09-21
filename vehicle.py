@@ -1,12 +1,13 @@
 class Vehicle:
   # Instances Attribute 
-  def __init__(self, vehicle_id: int, make: str, model: str, year: int, rental_rate: float, available: bool) -> None:
+  def __init__(self, vehicle_id: int, make: str, model: str, year: int, rental_rate: float, available=True) -> None:
     self.vehicle_id = vehicle_id
     self.make = make
     self.model = model
     self.year = year 
     self.rental_rate = rental_rate 
     self.available = available
+    self.need_maintenance = False 
 
   # Method Attribute
   def __str__(self) -> str:
@@ -20,3 +21,12 @@ class Vehicle:
     self.available = True 
     return f'Vehicle {self.model}: {self.make} returned'
   
+  def mark_maintenance(self):
+    self.need_maintenance = True 
+    self.available = False 
+    return f'Vehicle {self.model}: {self.make} need mantenance'
+  
+  def complete_maintenance(self):
+    self.need_maintenance = False 
+    self.available = True 
+    return f'Vehicle {self.model}: {self.make} does not need mantenance'
